@@ -1,13 +1,7 @@
-package com.origamitown.dotcloud.userinterface.signinactivity
+package com.origamitown.dotcloud.userinterface.signin
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.origamitown.dotcloud.R
 import com.origamitown.dotcloud.databinding.ActivitySignInBinding
 
 class SignInActivity : AppCompatActivity() {

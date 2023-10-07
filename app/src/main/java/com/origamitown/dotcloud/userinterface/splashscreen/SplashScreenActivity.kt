@@ -1,17 +1,11 @@
-package com.origamitown.dotcloud.userinterface.splashscreenactivity
+package com.origamitown.dotcloud.userinterface.splashscreen
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.origamitown.dotcloud.R
 import com.origamitown.dotcloud.databinding.ActivitySplashScreenBinding
-import com.origamitown.dotcloud.userinterface.mainactivity.MainActivity
+import com.origamitown.dotcloud.userinterface.main.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay

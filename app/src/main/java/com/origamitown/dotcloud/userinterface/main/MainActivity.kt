@@ -1,4 +1,4 @@
-package com.origamitown.dotcloud.userinterface.mainactivity
+package com.origamitown.dotcloud.userinterface.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
