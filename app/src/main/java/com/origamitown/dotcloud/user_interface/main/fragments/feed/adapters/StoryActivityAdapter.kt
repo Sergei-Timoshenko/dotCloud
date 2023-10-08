@@ -16,7 +16,6 @@ class StoryActivityAdapter() :
     ListAdapter<UserStoryActivity, StoryActivityAdapter.StoryActivityViewHolder>(
         DIFF_CALLBACK
     ) {
-
     companion object {
         private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<UserStoryActivity>() {
             override fun areItemsTheSame(
@@ -25,7 +24,6 @@ class StoryActivityAdapter() :
             ): Boolean {
                 return oldItem.userDetails.userId == newItem.userDetails.userId
             }
-
             override fun areContentsTheSame(
                 oldItem: UserStoryActivity,
                 newItem: UserStoryActivity
@@ -36,7 +34,6 @@ class StoryActivityAdapter() :
     }
 
     inner class StoryActivityViewHolder(val binding: ItemUserStoryActivityIconBinding) : RecyclerView.ViewHolder(binding.root) {
-
         @SuppressLint("ResourceAsColor")
         fun bind(userStoryActivity: UserStoryActivity) {
             if (userStoryActivity.stories.map { usaStories -> Story(

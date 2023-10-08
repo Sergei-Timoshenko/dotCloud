@@ -20,7 +20,6 @@ class PostAdapter(
     androidx.recyclerview.widget.ListAdapter<Post, PostAdapter.FeedViewHolder>(
         DIFF_CALLBACK
     ) {
-
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Post>() {
             override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {

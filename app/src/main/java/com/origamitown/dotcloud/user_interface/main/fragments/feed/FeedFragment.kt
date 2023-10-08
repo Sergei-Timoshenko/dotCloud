@@ -42,10 +42,20 @@ class FeedFragment : Fragment(), IPostActions {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupPager()
+    }
+
+    private fun setupPager() {
         val pagerAdapter = PagerAdapter(this)
         val pager = binding.feedContent.feedPager
         pager.adapter = pagerAdapter
-        pagerAdapter.submitFragmentList(listOf(FriendFeedFragment(viewModel), GlobalFeedFragment(viewModel)))
+        pagerAdapter.submitFragmentList(
+            listOf(
+                FriendFeedFragment(viewModel),
+                GlobalFeedFragment(viewModel),
+            )
+        )
+
         val tabLayout = binding.feedContent.feedTabLayout
         TabLayoutMediator(tabLayout, pager) { tab, position ->
             run {
@@ -58,10 +68,8 @@ class FeedFragment : Fragment(), IPostActions {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 viewModel.changeFeedState()
             }
-
             override fun onTabUnselected(tab: TabLayout.Tab?) {
             }
-
             override fun onTabReselected(tab: TabLayout.Tab?) {
             }
         })

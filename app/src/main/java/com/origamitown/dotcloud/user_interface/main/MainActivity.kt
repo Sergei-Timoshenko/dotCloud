@@ -25,9 +25,5 @@ class MainActivity : AppCompatActivity() {
         val navController = navHost.navController
         val bottomNav = binding.mainBottomNav
         bottomNav.setupWithNavController(navController)
-
-        binding.mainAddPhotoButton.setOnClickListener {
-            feedViewModel.addInitialData()
-        }
     }
 }

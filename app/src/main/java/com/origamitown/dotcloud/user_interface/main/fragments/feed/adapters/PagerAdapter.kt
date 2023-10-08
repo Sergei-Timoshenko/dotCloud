@@ -11,7 +11,6 @@ class PagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
             override fun areItemsTheSame(oldItem: Fragment, newItem: Fragment): Boolean {
                 return oldItem == newItem
             }
-
             override fun areContentsTheSame(oldItem: Fragment, newItem: Fragment): Boolean {
                 return oldItem == newItem
             }

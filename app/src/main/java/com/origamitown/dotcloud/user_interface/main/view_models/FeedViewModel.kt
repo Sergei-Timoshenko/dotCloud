@@ -15,14 +15,6 @@ enum class FeedState {
 }
 
 class FeedViewModel : ViewModel() {
-    private val listOfPosts = listOf<Post>(
-        Post.Ad("@weareserhii", "@weareserhii", null, "Serhii is a good person and a humble creator of this app.", 0),
-        Post.Video("videoUrl", null, 0, null, UserDetails("username", null, 0), 0),
-        Post.Photo("photoUrl", null, 0, null, UserDetails("username", null, 0), 0),
-
-    )
-    private var increment = 0
-
     private val _friendFeedPosts = MutableLiveData<List<Post>>()
     private val friendFeedPosts: LiveData<List<Post>> = _friendFeedPosts
 
@@ -34,18 +26,6 @@ class FeedViewModel : ViewModel() {
             FeedState.FRIEND -> friendFeedPosts
             FeedState.GLOBAL -> globalFeedPosts
         }
-    }
-
-    fun addInitialData() {
-        val friendFeedPostTemp = _friendFeedPosts.value?.toMutableList() ?: mutableListOf()
-        val globalFeedPostTemp = _friendFeedPosts.value?.toMutableList() ?: mutableListOf()
-        friendFeedPostTemp.add(listOfPosts[increment])
-        globalFeedPostTemp.add(listOfPosts[increment])
-        _friendFeedPosts.value = friendFeedPostTemp
-        _globalFeedPosts.value = globalFeedPostTemp
-
-        increment++
-        Log.d("Hello", increment.toString())
     }
 
     fun changeFeedState() {

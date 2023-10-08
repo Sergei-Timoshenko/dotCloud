@@ -19,6 +19,7 @@ class GlobalFeedFragment(
 ) : Fragment() {
     private var _binding: FragmentGlobalFeedBinding? = null
     private val binding get() = _binding!!
+    private lateinit var globalFeedAdapter: PostAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,15 +33,20 @@ class GlobalFeedFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupGlobalRecycler()
+
+        viewModel.feedPosts.observe(viewLifecycleOwner) { posts ->
+            globalFeedAdapter.submitList(posts)
+        }
+    }
+
+    private fun setupGlobalRecycler() {
         val iPostActions = requireParentFragment() as IPostActions
         val globalRecycler = binding.globalFeedRecycler
-        val globalFeedAdapter = PostAdapter(iPostActions)
+        globalFeedAdapter = PostAdapter(iPostActions)
         globalRecycler.apply {
             adapter = globalFeedAdapter
             layoutManager = LinearLayoutManager(requireContext())
-        }
-        viewModel.feedPosts.observe(viewLifecycleOwner) { posts ->
-            globalFeedAdapter.submitList(posts)
         }
     }
 

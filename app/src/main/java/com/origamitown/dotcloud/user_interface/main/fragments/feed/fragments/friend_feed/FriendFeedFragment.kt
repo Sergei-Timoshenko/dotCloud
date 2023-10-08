@@ -19,6 +19,7 @@ class FriendFeedFragment(
 ) : Fragment() {
     private var _binding: FragmentFriendFeedBinding? = null
     private val binding get() = _binding!!
+    private lateinit var friendFeedAdapter: PostAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,16 +33,20 @@ class FriendFeedFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val iPostActions = requireParentFragment() as IPostActions
-        val friendRecycler = binding.friendFeedRecycler
-        val friendFeedAdapter = PostAdapter(iPostActions)
-        friendRecycler.apply {
-            adapter = friendFeedAdapter
-            layoutManager = LinearLayoutManager(requireContext())
-        }
+        setupFriendRecycler()
 
         viewModel.feedPosts.observe(viewLifecycleOwner) { posts ->
             friendFeedAdapter.submitList(posts)
+        }
+    }
+
+    private fun setupFriendRecycler() {
+        val iPostActions = requireParentFragment() as IPostActions
+        val friendRecycler = binding.friendFeedRecycler
+        friendFeedAdapter = PostAdapter(iPostActions)
+        friendRecycler.apply {
+            adapter = friendFeedAdapter
+            layoutManager = LinearLayoutManager(requireContext())
         }
     }
 
