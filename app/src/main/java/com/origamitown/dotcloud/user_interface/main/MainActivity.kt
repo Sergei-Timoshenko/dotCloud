@@ -1,4 +1,4 @@
-package com.origamitown.dotcloud.userinterface.main
+package com.origamitown.dotcloud.user_interface.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.origamitown.dotcloud.databinding.ActivityMainBinding
-import com.origamitown.dotcloud.userinterface.main.viewmodels.FeedViewModel
+import com.origamitown.dotcloud.user_interface.main.view_models.FeedViewModel
 
 class MainActivity : AppCompatActivity() {
 

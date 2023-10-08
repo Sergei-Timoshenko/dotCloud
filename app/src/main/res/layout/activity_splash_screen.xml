@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".userinterface.splashscreen.SplashScreenActivity">
+    tools:context=".user_interface.splash_screen.SplashScreenActivity">
 
     <TextView
         android:layout_width="wrap_content"

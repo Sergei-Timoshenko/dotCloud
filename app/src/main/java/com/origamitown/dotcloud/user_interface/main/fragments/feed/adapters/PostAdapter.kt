@@ -1,4 +1,4 @@
-package com.origamitown.dotcloud.userinterface.main.fragments.feed.adapters
+package com.origamitown.dotcloud.user_interface.main.fragments.feed.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -43,7 +43,7 @@ class PostAdapter(
                 if (oldItem::class == Post.Ad::class) {
                     return (oldItem as Post.Ad).adId == (newItem as Post.Ad).adId
                 }
-                return false
+                return true
             }
         }
     }

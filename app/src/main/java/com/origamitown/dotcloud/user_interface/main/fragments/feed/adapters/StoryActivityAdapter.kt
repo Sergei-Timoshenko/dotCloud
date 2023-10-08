@@ -1,4 +1,4 @@
-package com.origamitown.dotcloud.userinterface.main.fragments.feed.adapters
+package com.origamitown.dotcloud.user_interface.main.fragments.feed.adapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -46,9 +46,9 @@ class StoryActivityAdapter() :
                 userId = usaStories.userId,
                 storyId = usaStories.storyId
             )}.map { stories ->  stories.storyPrivacy }.contains(StoryPrivacy.CLOSE_FRIENDS)) {
-                binding.root.background.setTint(R.color.story_green)
+                binding.root.setCardBackgroundColor(R.color.story_green)
             } else {
-                binding.root.background.setTint(R.color.story_orange)
+                binding.root.setCardBackgroundColor(R.color.story_orange)
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.origamitown.dotcloud.userinterface.main.fragments.profile
+package com.origamitown.dotcloud.user_interface.main.fragments.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.origamitown.dotcloud.databinding.FragmentProfileBinding
 
 class ProfileFragment : Fragment() {
-
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
@@ -17,7 +16,7 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentProfileBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
         return binding.root
     }
 

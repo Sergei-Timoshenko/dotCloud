@@ -13,12 +13,12 @@
         android:theme="@style/Theme.DotCloud"
         tools:targetApi="31">
         <activity
-            android:name=".userinterface.signin.SignInActivity"
+            android:name=".user_interface.sign_in.SignInActivity"
             android:exported="false"
             android:label="@string/title_activity_sign_in"
             android:theme="@style/Theme.DotCloud" />
         <activity
-            android:name=".userinterface.splashscreen.SplashScreenActivity"
+            android:name=".user_interface.splash_screen.SplashScreenActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.DotCloud">
@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".userinterface.main.MainActivity"
+            android:name=".user_interface.main.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.DotCloud"></activity>

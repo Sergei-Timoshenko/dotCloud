@@ -1,4 +1,4 @@
-package com.origamitown.dotcloud.userinterface.signin
+package com.origamitown.dotcloud.user_interface.sign_in
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

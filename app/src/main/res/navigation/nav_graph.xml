@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/feedFragment"
-        android:name="com.origamitown.dotcloud.userinterface.main.fragments.feed.FeedFragment"
+        android:name="com.origamitown.dotcloud.user_interface.main.fragments.feed.FeedFragment"
         android:label="fragment_feed"
         tools:layout="@layout/fragment_feed" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.origamitown.dotcloud.userinterface.main.fragments.profile.ProfileFragment"
+        android:name="com.origamitown.dotcloud.user_interface.main.fragments.profile.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
