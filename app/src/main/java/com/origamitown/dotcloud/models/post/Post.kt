@@ -5,8 +5,7 @@ import com.origamitown.dotcloud.models.comment.Comment
 import com.origamitown.dotcloud.models.user.UserDetails
 import kotlinx.parcelize.Parcelize
 
-sealed class Post() : Parcelable {
-    @Parcelize
+sealed class Post {
     data class Photo(
         val photoUrl: String,
         val photoDescription: String?,
@@ -15,18 +14,19 @@ sealed class Post() : Parcelable {
         val userDetails: UserDetails,
         val photoId: Int
     ) : Post()
-    @Parcelize
     data class Video(
         val videoUrl: String,
         val videoDescription: String?,
-        val videoWatchCount: Int,
+        val videoViewCount: Int,
         val videoComments: List<Comment>?,
         val userDetails: UserDetails,
         val videoId: Int
     ) : Post()
-    @Parcelize
     data class Ad(
+        val adName: String,
         val adUrl: String,
+        val adPhotoUrl: String? = null,
+        val adDescription: String? = null,
         val adId: Int,
     ) : Post()
 }

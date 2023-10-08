@@ -1,19 +1,23 @@
-package com.origamitown.dotcloud.userinterface.main.fragments.feed.adapters.recycleradapters
+package com.origamitown.dotcloud.userinterface.main.fragments.feed.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.origamitown.dotcloud.databinding.ItemAdPostBinding
 import com.origamitown.dotcloud.databinding.ItemFeedBinding
 import com.origamitown.dotcloud.models.post.Post
+import java.lang.Error
 
 enum class ViewType {
     PHOTO, VIDEO, AD
 }
 
-class FeedRecyclerAdapter :
-    androidx.recyclerview.widget.ListAdapter<Post, FeedRecyclerAdapter.FeedViewHolder>(
+class PostAdapter(
+    val iPostActions: IPostActions
+) :
+    androidx.recyclerview.widget.ListAdapter<Post, PostAdapter.FeedViewHolder>(
         DIFF_CALLBACK
     ) {
 
@@ -55,9 +59,13 @@ class FeedRecyclerAdapter :
                 binding.itemFeedDetails.text = video.toString()
             }
         }
-        class AdViewHolder(private val binding: ItemFeedBinding) : FeedViewHolder(binding.root) {
+        class AdViewHolder(val binding: ItemAdPostBinding) : FeedViewHolder(binding.root) {
             fun bind(ad: Post.Ad) {
-                binding.itemFeedDetails.text = ad.toString()
+                binding.adName.text = ad.adName
+                binding.adDescription.text = ad.adDescription ?: ""
+                ad.adPhotoUrl?.let { url ->
+
+                }
             }
         }
     }
@@ -67,6 +75,7 @@ class FeedRecyclerAdapter :
             is Post.Photo -> ViewType.PHOTO.ordinal
             is Post.Video -> ViewType.VIDEO.ordinal
             is Post.Ad -> ViewType.AD.ordinal
+            else -> throw Error()
         }
     }
 
@@ -81,12 +90,11 @@ class FeedRecyclerAdapter :
                 FeedViewHolder.VideoViewHolder(binding)
             }
             ViewType.AD.ordinal -> {
-                val binding = ItemFeedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                val binding = ItemAdPostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 FeedViewHolder.AdViewHolder(binding)
             }
             else -> {
-                val binding = ItemFeedBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                FeedViewHolder.AdViewHolder(binding)
+                throw Error()
             }
         }
     }
@@ -96,7 +104,22 @@ class FeedRecyclerAdapter :
         when (currentPost) {
             is Post.Photo -> (holder as FeedViewHolder.PhotoViewHolder).bind(currentPost)
             is Post.Video -> (holder as FeedViewHolder.VideoViewHolder).bind(currentPost)
-            is Post.Ad -> (holder as FeedViewHolder.AdViewHolder).bind(currentPost)
+            is Post.Ad -> {
+                val holder = holder as FeedViewHolder.AdViewHolder
+                holder.binding.root.setOnClickListener {
+                    if (position != RecyclerView.NO_POSITION) {
+                        iPostActions.navigateToAdUrl(currentPost.adUrl)
+                    }
+                }
+                holder.bind(currentPost)
+            }
+            else -> throw Error()
         }
     }
+}
+
+interface IPostActions {
+    fun openPhotoPreview()
+    fun openVideoPreview()
+    fun navigateToAdUrl(adUrl: String)
 }
